@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V.I.K. — Ваша Идеальная Кухня</title>
+
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-functions-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-messaging-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-remote-config-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-performance-compat.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.min.js"></script>
+
+    <script src="js/firebase-config.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="products"></div>
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container">
+        <div class="header-top">
+          <div class="logo">
+            <a href="index.html" class="header-logo">
+              <img src="images/logo_VIK.png" alt="V.I.K." class="logo" />
+            </a>
+            <span>Ваша Идеальная Кухня</span>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="index.html#styles">Стили</a></li>
+              <li><a href="index.html#katalog">Каталог</a></li>
+              <li><a href="index.html#promo">Акции</a></li>
+              <li><a href="assistants.html">Помощники</a></li>
+              <li><a href="buyers.html">Покупателям</a></li>
+            </ul>
+          </nav>
+          <div class="header-contacts">
+            <a href="tel:+71234567890" class="phone">+7 (123) 456-78-90</a>
+            <button class="callback-btn" data-modal-type="callback" data-title="Заказать звонок" data-button-text="Заказать" data-hide-comment="true">Заказать звонок</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <header class="assistant-header">
+        <h1>Наши услуги</h1>
+        <p>
+          Полный комплекс услуг от профессионального замера до финального
+          монтажа вашей кухни
+        </p>
+      </header>
+
+      <section class="services-section">
+        <div class="service-tabs">
+          <div class="service-tab active" data-service="design">
+            Дизайн-проект
+          </div>
+          <div class="service-tab" data-service="measurement">Замер</div>
+          <div class="service-tab" data-service="delivery">Доставка</div>
+          <div class="service-tab" data-service="installation">Установка</div>
+        </div>
+
+        <!-- Дизайн-проект -->
+        <div id="design-service" class="service-content active">
+          <div class="service-container">
+            <div class="service-image">
+              <img
+                src="https://storage.yandexcloud.net/vikitchen/3D_projec.webp"
+                alt="Дизайн-проект кухни"
+              />
+            </div>
+            <div class="service-details">
+              <h2 class="service-title">Профессиональный дизайн-проект</h2>
+              <p class="service-description">
+                Наши дизайнеры создадут для вас 3D-визуализацию будущей кухни с
+                учетом всех ваших пожеланий, особенностей помещения и эргономики
+                пространства.
+              </p>
+
+              <div class="service-features">
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Разработка 3D-проекта в трех ракурсах
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Подбор цветовых решений и материалов
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Оптимальное расположение техники и мебели
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Учет всех ваших пожеланий и особенностей помещения
+                  </div>
+                </div>
+              </div>
+
+              <!--                     <div class="service-price">Бесплатно при заказе кухни</div>
+ -->
+              <a class="service-cta"
+                data-modal-type="callback" 
+                data-title="Заказать дизайн-проект" 
+                data-button-text="Заказать" 
+                data-hide-comment="true">Заказать дизайн-проект</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Замер -->
+        <div id="measurement-service" class="service-content">
+          <div class="service-container">
+            <div class="service-image">
+              <img
+                src="https://storage.yandexcloud.net/vikitchen/zamer.webp"
+                alt="Профессиональный замер кухни"
+              />
+            </div>
+            <div class="service-details">
+              <h2 class="service-title">Точный замер помещения</h2>
+              <p class="service-description">
+                Наш специалист приедет к вам в удобное время, сделает все
+                необходимые замеры и даст профессиональные рекомендации по
+                планировке кухни.
+              </p>
+
+              <div class="service-features">
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Выезд замерщика в удобное для вас время
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Точные замеры с использованием профессионального
+                    оборудования
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Анализ состояния стен, пола и коммуникаций
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Консультация по оптимальной планировке
+                  </div>
+                </div>
+              </div>
+
+              <!--                     <div class="service-price">Бесплатно при заказе кухни</div>
+ -->
+              <a class="service-cta"
+                data-modal-type="callback" 
+                data-title="Записаться на замер" 
+                data-button-text="Записаться" 
+                data-hide-comment="true"
+                >Записаться на замер</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Доставка -->
+        <div id="delivery-service" class="service-content">
+          <div class="service-container">
+            <div class="service-image">
+              <img
+                src="https://storage.yandexcloud.net/vikitchen/dostavka.webp"
+                alt="Доставка кухни"
+              />
+            </div>
+            <div class="service-details">
+              <h2 class="service-title">Бережная доставка</h2>
+              <p class="service-description">
+                Мы доставим вашу кухню в точно согласованные сроки с соблюдением
+                всех правил транспортировки.
+              </p>
+
+              <div class="service-features">
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Доставка в удобное для вас время
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Аккуратная разгрузка и занос в помещение
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Проверка комплектности при получении
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Вежливость, взвешенность, приветливость
+                  </div>
+                </div>
+              </div>
+
+              <!--                     <div class="service-price">От 1 500 ₽ (в зависимости от адреса)</div>
+ -->
+              <a class="service-cta"
+                data-modal-type="callback" 
+                data-title="Узнать условия доставки" 
+                data-button-text="Узнать условия" 
+                data-hide-comment="true"
+                >Узнать условия доставки</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Установка -->
+        <div id="installation-service" class="service-content">
+          <div class="service-container">
+            <div class="service-image">
+              <img
+                src="https://storage.yandexcloud.net/vikitchen/sborka.webp"
+                alt="Установка кухни"
+              />
+            </div>
+            <div class="service-details">
+              <h2 class="service-title">Профессиональная установка</h2>
+              <p class="service-description">
+                Наши мастера с многолетним опытом качественно и быстро установят
+                кухню, подключат технику и дадут рекомендации по уходу.
+              </p>
+
+              <div class="service-features">
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Сборка и установка кухонного гарнитура
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Подключение встраиваемой техники
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">Установка столешницы и мойки</div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">✓</div>
+                  <div class="feature-text">
+                    Уборка после монтажа и вывоз упаковки
+                  </div>
+                </div>
+              </div>
+
+              <!--                     <div class="service-price">От 5% от стоимости кухни</div>
+ -->
+              <a class="service-cta"
+                data-modal-type="callback" 
+                data-title="Заказать установку" 
+                data-button-text="Заказать" 
+                data-hide-comment="true"
+                >Заказать установку</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Блок преимуществ -->
+      <section class="benefits-section">
+        <div class="container">
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <div class="benefit-icon">🏆</div>
+              <h3 class="benefit-title">Опытные специалисты</h3>
+              <p class="benefit-text">
+                Работаем с 1996 года, установили более 5000 кухонь
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">⏱️</div>
+              <h3 class="benefit-title">Соблюдение сроков</h3>
+              <p class="benefit-text">
+                Четко соблюдаем оговоренные сроки выполнения работ
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">🔧</div>
+              <h3 class="benefit-title">Качественные материалы</h3>
+              <p class="benefit-text">
+                Используем только проверенные материалы и фурнитуру
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">📝</div>
+              <h3 class="benefit-title">Гарантия</h3>
+              <p class="benefit-text">
+                Даем гарантию до 3 лет на все виды работ
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал -->
+    <footer id="footer" class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Услуги</h3>
+            <ul>
+              <li><a href="services.html">Дизайн-проект</a></li>
+              <li><a href="services.html">Замер</a></li>
+              <li><a href="services.html">Доставка</a></li>
+              <li><a href="services.html">Установка</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Партнерам</h3>
+            <ul>
+              <li><a href="partners.html">Ремонтным бригадам</a></li>
+              <li><a href="partners.html">Дизайн-студиям</a></li>
+              <li><a href="partners.html">Предложить партнерство</a></li>
+              <li><a href="partners.html">Отдел закупок</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>О нас</h3>
+            <ul>
+              <li><a href="about.html">О компании</a></li>
+              <li><a href="about.html">Наша миссия</a></li>
+              <li><a href="about.html">Карьера в компании</a></li>
+              <li><a href="about.html">Поддержка</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column contacts-column">
+            <h3>Контакты</h3>
+            <address>
+              <p><a href="addresses.html">Наши адреса</a></p>
+              <p><a href="tel:+71234567890">+7 (123) 456-78-90</a></p>
+              <p>
+                <a href="mailto:info@vikitchen.ru">info@vikitchen.ru</a>
+              </p>
+            </address>
+            <div class="social-links">
+              <a href="https://vk.com/vikitchen_ru" class="social-icon"
+                ><img
+                  src="images/icon_vk.png"
+                  alt="Группа ВКонтакте"
+                  width="32"
+                  height="32"
+              /></a>
+              <a href="https://t.me/vikitchen" class="social-icon"
+                ><img
+                  src="images/icon_telegram.png"
+                  alt="Группа Телеграм"
+                  width="32"
+                  height="32"
+              /></a>
+              <a href="https://rutube.ru/channel/63057802/" class="social-icon"
+                ><img
+                  src="images/icon_rutube.png"
+                  alt="Канал RuTube"
+                  width="32"
+                  height="32"
+              /></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 - 2025 V.I.K. — Ваша Идеальная Кухня. Все права
+            защищены.
+          </p>
+          <a href="privacy-policy.html" class="policy-link"
+            >Политика конфиденциальности</a
+          >
+        </div>
+      </div>
+    </footer>
+
+<!-- Универсальное модальное окно -->
+<div id="universalModal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">Заголовок формы</h2>
+      <button class="close-btn">&times;</button>
+    </div>
+    <form id="universalForm">
+      <input type="hidden" id="pageUrl" name="pageUrl">
+      <input type="hidden" id="formType" name="formType">
+      
+      <div class="form-group" id="nameGroup">
+        <label for="userName" class="form-label">ФИО</label>
+        <input
+          type="text"
+          id="userName"
+          class="form-input"
+          placeholder="Введите ваше имя"
+          maxlength="30"
+          data-validate="name"
+        />
+        <div id="userNameError" class="error-message">
+          Пожалуйста, введите корректное ФИО (только буквы, до 30 символов)
+        </div>
+      </div>
+      
+      <div class="form-group" id="phoneGroup">
+        <label for="userPhone" class="form-label">Телефон</label>
+        <input
+          type="tel"
+          id="userPhone"
+          class="form-input"
+          placeholder="+7 (___) ___-__-__"
+          data-validate="phone"
+        />
+        <div id="userPhoneError" class="error-message">
+          Пожалуйста, введите корректный номер телефона (начинается с +7)
+        </div>
+      </div>
+      
+      <div class="form-group" id="commentGroup">
+        <label for="userComment" class="form-label">Комментарий</label>
+        <textarea
+          id="userComment"
+          class="form-input"
+          rows="5"
+          placeholder="Введите ваш комментарий"
+          maxlength="500"
+          data-validate="text"
+        ></textarea>
+        <div id="userCommentError" class="error-message">
+          Пожалуйста, введите комментарий (до 500 символов)
+        </div>
+      </div>
+      
+      <div class="form-group" id="captchaGroup">
+        <label class="form-label">Подтвердите, что вы не робот</label>
+        <div class="captcha-container">
+          <div id="captchaText" class="captcha-text">A7B9C</div>
+          <button type="button" id="refreshCaptcha" class="refresh-captcha">
+            ↻
+          </button>
+        </div>
+        <input
+          type="text"
+          id="captchaInput"
+          class="form-input"
+          placeholder="Введите текст с картинки"
+          data-validate="captcha"
+        />
+        <div id="captchaInputError" class="error-message">
+          
+        </div>
+      </div>
+
+      <div class="form-group" id="privacyGroup">
+        <div class="checkbox-container">
+          <input 
+            type="checkbox" 
+            id="privacyCheckbox" 
+            class="form-checkbox"
+            data-validate="checkbox"
+          />
+          <label for="privacyCheckbox" class="checkbox-label">
+            Я согласен на обработку персональных данных
+          </label>
+        </div>
+        <div id="privacyCheckboxError" class="error-message">
+          Необходимо дать согласие на обработку персональных данных
+        </div>
+      </div>
+      
+      <button type="submit" id="submitBtn" class="submit-btn" disabled>
+        Отправить
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Универсальное окно благодарности -->
+<div id="thankYouModal" class="modal-overlay">
+  <div class="modal-content thank-you-modal">
+    <div class="thank-you-icon">✓</div>
+    <h2 class="thank-you-title" id="thankYouTitle">Спасибо за обращение!</h2>
+    <p class="thank-you-text" id="thankYouText">
+      Наш менеджер свяжется с вами в ближайшее время.
+    </p>
+    <button id="closeThankYouBtn" class="submit-btn" style="max-width: 200px">
+      Закрыть
+    </button>
+  </div>
+</div>
+
+    <script src="js/modal_windows.js"></script>
+    <script src="js/services.js"></script>
+  </body>
+</html>

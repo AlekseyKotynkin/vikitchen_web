@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V.I.K. — Ваша Идеальная Кухня</title>
+
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-functions-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-messaging-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-remote-config-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-performance-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.min.js"></script>
+
+
+
+    <script src="js/firebase-config.js"></script>
+
+    <script src="js/common.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="products"></div>
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container">
+        <div class="header-top">
+          <div class="logo">
+            <a href="index.html" class="header-logo">
+              <img src="images/logo_VIK.png" alt="V.I.K." class="logo" />
+            </a>
+            <span>Ваша Идеальная Кухня</span>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="#styles">Стили</a></li>
+              <li><a href="#katalog">Каталог</a></li>
+              <li><a href="#promo">Акции</a></li>
+              <li><a href="assistants.html">Помощники</a></li>
+              <li><a href="buyers.html">Покупателям</a></li>
+            </ul>
+          </nav>
+          <div class="header-contacts">
+            <a href="tel:+71234567890" class="phone">+7 (123) 456-78-90</a>
+            <button class="callback-btn" data-modal-type="callback" data-title="Заказать звонок" data-button-text="Заказать" data-hide-comment="true">Заказать звонок</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero-slider">
+      <div class="slides-container">
+        <!-- Слайд 1 -->
+        <div class="slide active">
+          <div class="slide-content">
+            <h2>Идеальная кухня для вашего дома</h2>
+            <p>
+              Ваша кухня под ваши привычки — чтобы каждая деталь работала на вас
+            </p>
+            <a href="assistants.html" class="cta-button">Онлайн помощник</a>
+          </div>
+        </div>
+
+        <!-- Слайд 2 -->
+        <div class="slide">
+          <div class="slide-content">
+            <h2>Кухня под Ваши привычки</h2>
+            <p>
+              Индивидуальный дизайн, удобное хранение и продуманная эргономика.
+            </p>
+            <a href="services.html" class="cta-button">Получить 3D-проект</a>
+          </div>
+        </div>
+
+        <!-- Слайд 3 -->
+        <div class="slide">
+          <div class="slide-content">
+            <h2>Мобильный шоурум</h2>
+            <p>
+              Увидите материалы, фурнитуру и технологии вживую — не выходя из
+              дома.
+            </p>
+            <a class="cta-button" data-modal-type="callback" data-title="Записаться на замер" data-button-text="Заказать" data-hide-comment="true">Записаться на замер</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Навигационные точки (вынесены за пределы slides-container) -->
+      <div class="slider-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+      </div>
+    </section>
+
+    <section class="target-audience container">
+      <h2>Мы создаем кухни для:</h2>
+      <div class="audience-grid">
+        <div class="audience-card family">
+          <div class="audience-icon">
+            <img
+              src="https://storage.yandexcloud.net/vikitchen/2-2.webp"
+              alt="Семья"
+            />
+          </div>
+          <h3>Семей</h3>
+          <p>
+            Безопасность, удобство и многофункциональность для комфортной жизни
+            с детьми.
+          </p>
+        </div>
+
+        <div class="audience-card career">
+          <div class="audience-icon">
+            <img
+              src="https://storage.yandexcloud.net/vikitchen/2_3.webp"
+              alt="Карьера"
+            />
+          </div>
+          <h3>Карьеристов</h3>
+          <p>Компактные и технологичные решения для тех, кто ценит время</p>
+        </div>
+
+        <div class="audience-card gourmet">
+          <div class="audience-icon">
+            <img
+              src="https://storage.yandexcloud.net/vikitchen/2_4.webp"
+              alt="Гурман"
+            />
+          </div>
+          <h3>Гурманов</h3>
+          <p>
+            Профессиональная техника и эргономика для настоящих ценителей
+            кулинарии.
+          </p>
+        </div>
+
+        <div class="audience-card trendsetter">
+          <div class="audience-icon">
+            <img
+              src="https://storage.yandexcloud.net/vikitchen/2_6.webp"
+              alt="Тренд"
+            />
+          </div>
+          <h3>Ценителей стиля</h3>
+          <p>
+            Дизайнерские решения и эксклюзивные материалы для самых
+            требовательных.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="styles" class="styles-slider">
+      <div class="container">
+        <h2>Популярные стили кухонь</h2>
+        <p>Подберите оформление, которое подчеркнет ваш вкус:</p>
+        <!-- Версия для компьютеров -->
+        <div class="desktop-version">
+          <div class="styles-slider-container">
+            <!-- Слайд 1 - Минимализм -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_1.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Минимализм</h3>
+                <p>
+                  Минимализм — это стиль для тех, кто ценит порядок, простор и
+                  эстетику в каждой детали.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Ключевые черты стиля:</li>
+                  <li>✔ Лаконичность — строгие линии, отсутствие декора.</li>
+                  <li>
+                    ✔ Монохромная палитра — белый, серый, черный + натуральные
+                    текстуры.
+                  </li>
+                  <li>
+                    ✔ Скрытые решения — встроенная техника, системы хранения без
+                    ручек.
+                  </li>
+                  <li>✔ Свет и воздух — максимум свободного пространства.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 2 - Хай-тек -->
+            <div class="style-slide">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_2.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Хай-тек</h3>
+                <p>
+                  Хай-тек — уникальный стиль, тяготеющий к сверхсовременным
+                  интерьерным решениям.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Стиль для тех, кто ценит:</li>
+                  <li>✔ Инновации — умная техника и современные материалы.</li>
+                  <li>
+                    ✔ Функциональность — продуманные системы хранения и
+                    эргономика.
+                  </li>
+                  <li>
+                    ✔ Ультрасовременный look — металл, стекло, глянец и
+                    подсветка.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 3 - Скандинавский -->
+            <div class="style-slide">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_3.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Скандинавский</h3>
+                <p>
+                  Скандинавский стиль — это когда каждый день начинается с
+                  ощущения свежести и гармонии.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Ключевые особенности:</li>
+                  <li>
+                    ✔ Светлое дерево (дуб, ясень, береза) — тепло и
+                    экологичность.
+                  </li>
+                  <li>
+                    ✔ Пастельная гамма (белый, серый, мягкий голубой, мятный) —
+                    ощущение простора.
+                  </li>
+                  <li>
+                    ✔ Минимализм без стерильности — открытые полки, скрытое
+                    хранение, никакого визуального шума.
+                  </li>
+                  <li>
+                    ✔ Натуральные текстуры — лён, керамика, матовые поверхности.
+                  </li>
+                  <li>
+                    ✔ Акцент на свет — большие окна, точечные светильники,
+                    свечи.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 4 - Лофт -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_4.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Лофт</h3>
+                <p>
+                  Лофт - декоративная отделка стен под бетон, много свободного
+                  места, уюта и света.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Особенности стиля:</li>
+                  <li>
+                    ✔ Кирпичные стены — необработанная кладка или декоративные
+                    панели.
+                  </li>
+                  <li>
+                    ✔ Открытые коммуникации — трубы, вентиляция и провода как
+                    часть дизайна.
+                  </li>
+                  <li>
+                    ✔ Металлические акценты — стальные столешницы, чугунная
+                    фурнитура, медные светильники.
+                  </li>
+                  <li>
+                    ✔ Грубые фактуры — бетон, матовое стекло, нешлифованное
+                    дерево.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 5 - Классика -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_5.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Классика</h3>
+                <p>
+                  Классическая кухня — это гармония роскоши и уюта, где каждая
+                  деталь продумана до мелочей.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Особенности классического стиля:</li>
+                  <li>
+                    ✔ Резные фасады — изысканные узоры и фигурные элементы. .
+                  </li>
+                  <li>
+                    ✔ Натуральные материалы — массив дерева, мраморные
+                    столешницы, кованая фурнитура.
+                  </li>
+                  <li>
+                    ✔ Традиционные цвета — кремовый, бежевый, бордо, изумрудный,
+                    тёмный шоколад.
+                  </li>
+                  <li>
+                    ✔ Декор — лепнина, витражи, антикварная бронза, фарфоровые
+                    акценты.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 6 - Прованс -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_6.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Прованс</h3>
+                <p>Прованс — уют французской деревни в вашем доме.</p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Ключевые особенности:</li>
+                  <li>
+                    ✔ Цвета: Молочный, лавандовый, оливковый, терракотовый.
+                  </li>
+                  <li>
+                    ✔ Материалы: Дерево с эффектом патины, матовая краска,
+                    кованый металл.
+                  </li>
+                  <li>
+                    ✔ Декор: Глиняные кувшины, вышитые салфетки, фарфор с
+                    цветочными узорами.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 7 - Английский стиль -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_7.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Английский стиль</h3>
+                <p>
+                  Английская классика - элегантность вне времени, традиции
+                  британского аристократизма в вашем доме.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Ключевые особенности:</li>
+                  <li>
+                    ✔ Натуральное дерево — дубовые фасады с благородной патиной.
+                  </li>
+                  <li>
+                    ✔ Витражи и свинцовые вставки — игра света в стеклянных
+                    дверцах буфетов.
+                  </li>
+                  <li>
+                    ✔ Медная фурнитура — ручки-скобы, рейлинги и смесители с
+                    эффектом состаренности.
+                  </li>
+                  <li>
+                    ✔ Текстиль в клетку — шторы, чехлы на стульях и салфетки в
+                    стиле Burberry.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 8 - Ар-деко -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_8.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Ар-деко</h3>
+                <p>
+                  Стиль Ар-деко — это воплощение гламура и элегантности 1920-х
+                  годов.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Ключевые особенности:</li>
+                  <li>
+                    ✔ Геометрические узоры — зигзаги, солнца, ступенчатые формы
+                    в фасадах и декоре.
+                  </li>
+                  <li>
+                    ✔ Дорогие материалы — полированный мрамор, эбеновое дерево,
+                    латунь, кожаные вставки.
+                  </li>
+                  <li>
+                    ✔ Металлические акценты — золото, хром, бронза в ручках,
+                    светильниках и фурнитуре.
+                  </li>
+                  <li>
+                    ✔ Контрастные сочетания — черный + белый + глубокий изумруд
+                    или бордо.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 9 - Эко-стиль -->
+            <div class="style-slide">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_9.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Эко-стиль</h3>
+                <p>
+                  Кухня в эко-стиле — это не просто дизайн, а философия
+                  осознанного потребления.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Ключевые особенности:</li>
+                  <li>
+                    ✔ Натуральные материалы — бамбуковые фасады, пробковые
+                    панели, столешницы из переработанного дерева.
+                  </li>
+                  <li>
+                    ✔ Зеленые акценты — живые растения, фитостены, эко-текстиль.
+                  </li>
+                  <li>
+                    ✔ Энергоэффективность — встроенная техника класса А++,
+                    LED-освещение.
+                  </li>
+                  <li>
+                    ✔ Минимализм без стерильности — простые формы, но уютные
+                    текстуры.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 10 - Рустик -->
+            <div class="style-slide">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_10.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Рустик</h3>
+                <p>
+                  Рустик - настоящее дерево, натуральный камень и кованые
+                  элементы создают атмосферу уютного загородного дома.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Особенности стиля:</li>
+                  <li>
+                    ✔ Грубые фактуры — необработанное дерево, состаренные
+                    поверхности.
+                  </li>
+                  <li>✔ Экологичные материалы — камень, медь, лён.</li>
+                  <li>
+                    ✔ Открытые полки и кованая фурнитура — для аутентичного
+                    шарма.
+                  </li>
+                  <li>
+                    ✔ Тёплая цветовая гамма — оттенки дуба, оливы, терракоты.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 11 - Неоклассика -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_11.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Неоклассика</h3>
+                <p>
+                  Неоклассика — идеальный баланс между классической роскошью и
+                  современной функциональностью.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Особенности стиля:</li>
+                  <li>
+                    ✔ Гладкие фасады с изящной позолотой и тонкой профилировкой.
+                  </li>
+                  <li>✔ Мраморные столешницы с благородными прожилками.</li>
+                  <li>
+                    ✔ Сдержанная цветовая гамма: молочный, серый, глубокий
+                    синий, золотые акценты.
+                  </li>
+                  <li>
+                    ✔ Дорогая фурнитура: хромированные или матово-золотые ручки.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 12 - Фьюжн -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_12.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Фьюжн</h3>
+                <p>
+                  Кухня в стиле фьюжн — это искусство сочетать несочетаемое.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Ключевые черты:</li>
+                  <li>
+                    ✔ Гибридная эстетика — минимализм + насыщенные акценты.
+                  </li>
+                  <li>✔ Эклектичные материалы — дерево + металл + стекло.</li>
+                  <li>
+                    ✔ Глобальное вдохновение — от китайской фарфоровой вазы до
+                    испанской керамики.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Слайд 13 - Авангард -->
+            <div class="style-slide active">
+              <div
+                class="style-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_13.webp');
+                "
+              ></div>
+              <div class="style-slide-content">
+                <h3>Авангард</h3>
+                <p>
+                  Авангард — кухня как арт-объект, смелые линии, дерзкие
+                  цветовые сочетания и полная свобода форм.
+                </p>
+                <ul style="list-style-type: none; padding-left: 0">
+                  <li>Ключевые особенности:</li>
+                  <li>
+                    ✔ Яркие акценты — глубокий красный, ультрамарин,
+                    кислотно-желтый.
+                  </li>
+                  <li>
+                    ✔ Асимметрия — ломаные фасады, смещенные зоны, динамичные
+                    силуэты.
+                  </li>
+                  <li>
+                    ✔ Нестандартные материалы — глянцевый акрил, металл с
+                    патиной, зеркальные вставки.
+                  </li>
+                  <li>
+                    ✔ Арт-детали — абстрактные ручки, светильники-скульптуры,
+                    посуда с геометрическим принтом.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Навигационные точки -->
+          <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+            <span class="dot" data-slide="5"></span>
+            <span class="dot" data-slide="6"></span>
+            <span class="dot" data-slide="7"></span>
+            <span class="dot" data-slide="8"></span>
+            <span class="dot" data-slide="9"></span>
+            <span class="dot" data-slide="10"></span>
+            <span class="dot" data-slide="11"></span>
+            <span class="dot" data-slide="12"></span>
+          </div>
+        </div>
+        <!-- Версия для мобильных -->
+        <div class="mobile-version">
+          <div class="mobile-slides-container">
+            <!-- Слайд 1 - Минимализм -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_1.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Минимализм</h3>
+                <p>
+                  Минимализм — это стиль для тех, кто ценит порядок, простор и
+                  эстетику в каждой детали. В такой кухне нет ничего лишнего:
+                  только продуманные формы, качественные материалы и комфортное
+                  пространство для готовки и жизни.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 2 - Хай-тек -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_2.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Хай-тек</h3>
+                <p>
+                  Хай-тек — уникальный стиль, тяготеющий к сверхсовременным
+                  интерьерным решениям.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 3 - Скандинавский -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_3.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Скандинавский</h3>
+                <p>
+                  Скандинавский стиль — это когда каждый день начинается с
+                  ощущения свежести и гармонии.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 4 - Лофт -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_4.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Лофт</h3>
+                <p>
+                  Лофт - декоративная отделка стен под бетон, много свободного
+                  места, уюта и света.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 5 - Классика -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_5.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Классика</h3>
+                <p>
+                  Классическая кухня — это гармония роскоши и уюта, где каждая
+                  деталь продумана до мелочей.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 6 - Прованс -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_6.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Прованс</h3>
+                <p>Прованс — уют французской деревни в вашем доме.</p>
+              </div>
+            </div>
+
+            <!-- Слайд 7 - Английский стиль -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_7.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Английский стиль</h3>
+                <p>
+                  Английская классика - элегантность вне времени, традиции
+                  британского аристократизма в вашем доме.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 8 - Ар-деко -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_8.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Ар-деко</h3>
+                <p>
+                  Стиль Ар-деко — это воплощение гламура и элегантности 1920-х
+                  годов.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 9 - Эко-стиль -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_9.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Эко-стиль</h3>
+                <p>
+                  Кухня в эко-стиле — это не просто дизайн, а философия
+                  осознанного потребления.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 10 - Рустик -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_10.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Рустик</h3>
+                <p>
+                  Рустик - настоящее дерево, натуральный камень и кованые
+                  элементы создают атмосферу уютного загородного дома.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 11 - Неоклассика -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_11.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Неоклассика</h3>
+                <p>
+                  Неоклассика — идеальный баланс между классической роскошью и
+                  современной функциональностью.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 12 - Фьюжн -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_12.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Фьюжн</h3>
+                <p>
+                  Кухня в стиле фьюжн — это искусство сочетать несочетаемое.
+                </p>
+              </div>
+            </div>
+
+            <!-- Слайд 13 - Авангард -->
+            <div class="mobile-slide">
+              <div
+                class="mobile-slide-image"
+                style="
+                  background-image: url('https://storage.yandexcloud.net/vikitchen/style_3_13.webp');
+                "
+              ></div>
+              <div class="mobile-slide-content">
+                <h3>Авангард</h3>
+                <p>
+                  Авангард — кухня как арт-объект, смелые линии, дерзкие
+                  цветовые сочетания и полная свобода форм.
+                </p>
+              </div>
+            </div>
+
+            <!-- Точки навигации для мобильной версии -->
+            <div class="mobile-slider-dots">
+              <span class="mobile-dot active" data-slide="0"></span>
+              <span class="mobile-dot" data-slide="1"></span>
+              <span class="mobile-dot" data-slide="2"></span>
+              <span class="mobile-dot" data-slide="3"></span>
+              <span class="mobile-dot" data-slide="4"></span>
+              <span class="mobile-dot" data-slide="5"></span>
+              <span class="mobile-dot" data-slide="6"></span>
+              <span class="mobile-dot" data-slide="7"></span>
+              <span class="mobile-dot" data-slide="8"></span>
+              <span class="mobile-dot" data-slide="9"></span>
+              <span class="mobile-dot" data-slide="10"></span>
+              <span class="mobile-dot" data-slide="11"></span>
+              <span class="mobile-dot" data-slide="12"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="zones-section container">
+      <h2>Дополнительные зоны для вашей кухни</h2>
+      <div class="zones-grid">
+        <div class="zone-card">
+          <h3>Столовая</h3>
+          <img
+            src="https://storage.yandexcloud.net/vikitchen/stolovaya_1_2.webp"
+            alt="Обеденная зона"
+            style="
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 8px;
+              margin: 10px 0;
+            "
+          />
+          <p>Обеденная зона для семейных ужинов и приема гостей</p>
+        </div>
+
+        <div class="zone-card">
+          <h3>Гостиная</h3>
+          <img
+            src="https://storage.yandexcloud.net/vikitchen/gastinaya_1_2.webp"
+            alt="Открытая планировка"
+            style="
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 8px;
+              margin: 10px 0;
+            "
+          />
+          <p>Открытая планировка для создания единого пространства</p>
+        </div>
+
+        <div class="zone-card">
+          <h3>Рабочая зона</h3>
+          <img
+            src="https://storage.yandexcloud.net/vikitchen/rabota_zone.webp"
+            alt="Рабочий уголок"
+            style="
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 8px;
+              margin: 10px 0;
+            "
+          />
+          <p>Офисный уголок для работы на кухне</p>
+        </div>
+
+        <div class="zone-card">
+          <h3>Буфет</h3>
+          <img
+            src="https://storage.yandexcloud.net/vikitchen/bufet.webp"
+            alt="Зона хранения посуды"
+            style="
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 8px;
+              margin: 10px 0;
+            "
+          />
+          <p>Место для хранения посуды и сервировки</p>
+        </div>
+
+        <div class="zone-card">
+          <h3>Прачечная</h3>
+          <img
+            src="https://storage.yandexcloud.net/vikitchen/prachechnaya.webp"
+            alt="Совмещенная зона"
+            style="
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 8px;
+              margin: 10px 0;
+            "
+          />
+          <p>Совмещение кухни и зоны для стирки</p>
+        </div>
+
+        <div class="zone-card">
+          <h3>Кафе-зона</h3>
+          <img
+            src="https://storage.yandexcloud.net/vikitchen/kofe.webp"
+            alt="Барная стойка"
+            style="
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 8px;
+              margin: 10px 0;
+            "
+          />
+          <p>Барная стойка и место для кофе-брейков</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="katalog" class="categories-section">
+      <div class="container">
+        <h2>Наши товарные категории</h2>
+        <p>Широкий выбор кухонных решений для вашего дома</p>
+
+        <div class="category-grid">
+          <!-- Кухонные гарнитуры -->
+          <div class="category-card">
+            <div class="category-header">Кухонные гарнитуры</div>
+            <div class="subcategory-list">
+              <div class="subcategory-item">
+                <span class="subcategory-name">Прямые кухни</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Угловые кухни</span>
+                <a data-id="corner kitchens" data-name="Угловые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">П-образные кухни</span>
+                <a data-id="u-shaped kitchens" data-name="П-образные кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Островные кухни</span>
+                <a data-id="island kitchens" data-name="Островные кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Модульные кухни</span>
+                <a data-id="modular kitchens" data-name="Модульные кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+            </div>
+          </div>
+
+          <!-- Кухонные модули и системы хранения -->
+          <div class="category-card">
+            <div class="category-header">
+              Кухонные модули и системы хранения
+            </div>
+            <div class="subcategory-list">
+              <div class="subcategory-item">
+                <span class="subcategory-name">Навесные шкафы</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name"
+                  >Нижние шкафы (пеналы, тумбы)</span
+                >
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Угловые шкафы и системы</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Выдвижные ящики и корзины</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Полки и стеллажи</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name"
+                  >Бутылочницы, сушки для посуды</span
+                >
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+            </div>
+          </div>
+
+          <!-- Кухонная техника -->
+          <div class="category-card">
+            <div class="category-header">Кухонная техника</div>
+            <div class="subcategory-list">
+              <div class="subcategory-item">
+                <span class="subcategory-name">Встраиваемая техника</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name"
+                  >Холодильники и морозильники</span
+                >
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Посудомоечные машины</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Вытяжки и вентиляция</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Микроволновые печи</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Мелкая техника</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+            </div>
+          </div>
+
+          <!-- Столешницы и фартуки -->
+          <div class="category-card">
+            <div class="category-header">Столешницы и фартуки</div>
+            <div class="subcategory-list">
+              <div class="subcategory-item">
+                <span class="subcategory-name">Столешницы: ДСП, МДФ</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Натуральный камень</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Искусственный камень</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Деревянные столешницы</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name"
+                  >Фартуки: Керамическая плитка</span
+                >
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Стеклянные фартуки</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+            </div>
+          </div>
+
+          <!-- Кухонные мойки и смесители -->
+          <div class="category-card">
+            <div class="category-header">Кухонные мойки и смесители</div>
+            <div class="subcategory-list">
+              <div class="subcategory-item">
+                <span class="subcategory-name">Мойки: Нержавеющая сталь</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Гранитные мойки</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Смесители стандартные</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Сенсорные смесители</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+            </div>
+          </div>
+
+          <!-- Освещение для кухни -->
+          <div class="category-card">
+            <div class="category-header">Освещение для кухни</div>
+            <div class="subcategory-list">
+              <div class="subcategory-item">
+                <span class="subcategory-name">Подсветка рабочей зоны</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Точечные светильники</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Подвесные светильники</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+            </div>
+          </div>
+
+          <!-- Аксессуары и организация пространства -->
+          <div class="category-card">
+            <div class="category-header">Аксессуары и организация</div>
+            <div class="subcategory-list">
+              <div class="subcategory-item">
+                <span class="subcategory-name">Органайзеры для шкафов</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name"
+                  >Подставки для ножей и специй</span
+                >
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Контейнеры для хранения</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+            </div>
+          </div>
+
+          <!-- Мебель для кухни -->
+          <div class="category-card">
+            <div class="category-header">Мебель для кухни</div>
+            <div class="subcategory-list">
+              <div class="subcategory-item">
+                <span class="subcategory-name">Обеденные столы</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a> 
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Стулья и табуреты</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Барные стойки</span>
+                <a data-id="straight kitchens" data-name="Прямые кухни" class="subcategory-link">Смотреть</a>              
+              </div>
+              <div class="subcategory-item">
+                <span class="subcategory-name">Серванты и буфеты</span>
+                <a data-id="straight kitchens" data-name="Серванты и буфеты" class="subcategory-link">Смотреть</a>              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promo" class="promo-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Акции и спецпредложения</h2>
+          <p>Только сейчас - эксклюзивные условия на кухни вашей мечты</p>
+        </div>
+
+        <div class="promo-grid">
+          <!-- Хит продаж 1 -->
+          <div class="promo-card">
+            <div class="promo-badge">Хит продаж</div>
+            <div
+              class="promo-image"
+              style="
+                background-image: url('https://storage.yandexcloud.net/vikitchen/xit.webp');
+              "
+            ></div>
+            <div class="promo-content">
+              <h3 class="promo-title">Кухня в скандинавском стиле</h3>
+              <p class="promo-description">
+                Светлые фасады, натуральное дерево и функциональные решения для
+                вашего дома. В подарок - встраиваемая техника!
+              </p>
+              <div class="promo-details">
+                <div class="promo-price">
+                  <span class="original-price">225 000 ₽</span>
+                  <span class="discount-price">135 900 ₽</span>
+                </div>
+              </div>
+              <br />
+              <a class="promo-button" data-modal-type="callback" data-title="Подробно все объясним" data-button-text="Заказать" data-hide-comment="true">Подробнее</a>
+            </div>
+            <div class="promo-timer">
+              <div class="timer-text">До конца акции осталось:</div>
+              <div class="timer-numbers" data-end="2025-05-20T23:59:59">
+                3 дня 12:45:22
+              </div>
+            </div>
+          </div>
+
+          <!-- Подарок 2 -->
+          <div class="promo-card">
+            <div class="promo-badge">Подарок</div>
+            <div
+              class="promo-image"
+              style="
+                background-image: url('https://storage.yandexcloud.net/vikitchen/padaroc_1.webp');
+              "
+            ></div>
+            <div class="promo-content">
+              <h3 class="promo-title">Корзина выдвижная хромированная</h3>
+              <p class="promo-description">
+                Металлическая хромированная сетчатая корзина с плавным выдвижным
+                механизмом.
+              </p>
+              <div class="promo-details">
+                <div class="promo-price">
+                  <span class="original-price">9 999 ₽</span>
+                  <span class="discount-price">0 ₽</span>
+                </div>
+              </div>
+              <br />
+              <a class="promo-button" data-modal-type="callback" data-title="Подробно все объясним" data-button-text="Заказать" data-hide-comment="true">Подробнее</a>
+            </div>
+            <div class="promo-timer">
+              <div class="timer-text">До конца акции осталось:</div>
+              <div class="timer-numbers" data-end="2025-05-25T23:59:59">
+                5 дня 08:30:15
+              </div>
+            </div>
+          </div>
+
+          <!-- Спеццена 3 -->
+          <div class="promo-card">
+            <div class="promo-badge">Спеццена</div>
+            <div
+              class="promo-image"
+              style="
+                background-image: url('https://storage.yandexcloud.net/vikitchen/spec_cena.webp');
+              "
+            ></div>
+            <div class="promo-content">
+              <h3 class="promo-title">Модульная кухня "Минимализм"</h3>
+              <p class="promo-description">
+                Скидка 25% на все модульные кухни из коллекции 2024. Возможность
+                комбинировать элементы.
+              </p>
+              <div class="promo-details">
+                <div class="promo-price">
+                  <span class="original-price">120 000 ₽</span>
+                  <span class="discount-price">85 000 ₽</span>
+                </div>
+              </div>
+              <br />
+              <a class="promo-button" data-modal-type="callback" data-title="Подробно все объясним" data-button-text="Заказать" data-hide-comment="true">Подробнее</a>
+            </div>
+            <div class="promo-timer">
+              <div class="timer-text">До конца акции осталось:</div>
+              <div class="timer-numbers" data-end="2025-05-31T23:59:59">
+                2 дня 16:20:43
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="kitchen-types">
+      <div class="container">
+        <h2>Основные типы кухонь</h2>
+        <div class="type-grid">
+          <div class="type-card">
+            <div
+              class="type-image"
+              style="
+                background-image: url('https://storage.yandexcloud.net/vikitchen/klasika_1.webp');
+              "
+            ></div>
+            <div class="type-content">
+              <h3>Отдельная кухня</h3>
+              <p>
+                Полностью изолированное пространство для тех, кто ценит
+                уединение и традиционный подход
+              </p>
+              <p>
+                <strong>Дополнительные зоны:</strong> столовая, буфет,
+                прачечная, рабочая зона
+              </p>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div
+              class="type-image"
+              style="
+                background-image: url('https://storage.yandexcloud.net/vikitchen/leto_3.webp');
+              "
+            ></div>
+            <div class="type-content">
+              <h3>Летняя кухня</h3>
+              <p>
+                Открытое пространство для приготовления пищи на свежем воздухе
+              </p>
+              <p>
+                <strong>Дополнительные зоны:</strong> зона барбекю, летняя
+                столовая, мини-бар
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer id="footer" class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Услуги</h3>
+            <ul>
+              <li><a href="services.html">Дизайн-проект</a></li>
+              <li><a href="services.html">Замер</a></li>
+              <li><a href="services.html">Доставка</a></li>
+              <li><a href="services.html">Установка</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Партнерам</h3>
+            <ul>
+              <li><a href="partners.html">Ремонтным бригадам</a></li>
+              <li><a href="partners.html">Дизайн-студиям</a></li>
+              <li><a href="partners.html">Предложить партнерство</a></li>
+              <li><a href="partners.html">Отдел закупок</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>О нас</h3>
+            <ul>
+              <li><a href="about.html">О компании</a></li>
+              <li><a href="about.html">Наша миссия</a></li>
+              <li><a href="about.html">Карьера в компании</a></li>
+              <li><a href="about.html">Поддержка</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column contacts-column">
+            <h3>Контакты</h3>
+            <address>
+              <p><a href="addresses.html">Наши адреса</a></p>
+              <p><a href="tel:+71234567890">+7 (123) 456-78-90</a></p>
+              <p>
+                <a href="mailto:info@vikitchen.ru">info@vikitchen.ru</a>
+              </p>
+            </address>
+            <div class="social-links">
+              <a href="https://vk.com/vikitchen_ru" class="social-icon"
+                ><img
+                  src="images/icon_vk.png"
+                  alt="Группа ВКонтакте"
+                  width="32"
+                  height="32"
+              /></a>
+              <a href="https://t.me/vikitchen" class="social-icon"
+                ><img
+                  src="images/icon_telegram.png"
+                  alt="Группа Телеграм"
+                  width="32"
+                  height="32"
+              /></a>
+              <a href="https://rutube.ru/channel/63057802/" class="social-icon"
+                ><img
+                  src="images/icon_rutube.png"
+                  alt="Канал RuTube"
+                  width="32"
+                  height="32"
+              /></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 - 2025 V.I.K. — Ваша Идеальная Кухня. Все права
+            защищены.
+          </p>
+          <a href="privacy-policy.html" class="policy-link"
+            >Политика конфиденциальности</a
+          >
+        </div>
+      </div>
+    </footer>
+
+<!-- Универсальное модальное окно -->
+<div id="universalModal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">Заголовок формы</h2>
+      <button class="close-btn">&times;</button>
+    </div>
+    <form id="universalForm">
+      <input type="hidden" id="pageUrl" name="pageUrl">
+      <input type="hidden" id="formType" name="formType">
+      
+      <div class="form-group" id="nameGroup">
+        <label for="userName" class="form-label">ФИО</label>
+        <input
+          type="text"
+          id="userName"
+          class="form-input"
+          placeholder="Введите ваше имя"
+          maxlength="30"
+          data-validate="name"
+        />
+        <div id="userNameError" class="error-message">
+          Пожалуйста, введите корректное ФИО (только буквы, до 30 символов)
+        </div>
+      </div>
+      
+      <div class="form-group" id="phoneGroup">
+        <label for="userPhone" class="form-label">Телефон</label>
+        <input
+          type="tel"
+          id="userPhone"
+          class="form-input"
+          placeholder="+7 (___) ___-__-__"
+          data-validate="phone"
+        />
+        <div id="userPhoneError" class="error-message">
+          Пожалуйста, введите корректный номер телефона (начинается с +7)
+        </div>
+      </div>
+      
+      <div class="form-group" id="commentGroup">
+        <label for="userComment" class="form-label">Комментарий</label>
+        <textarea
+          id="userComment"
+          class="form-input"
+          rows="5"
+          placeholder="Введите ваш комментарий"
+          maxlength="500"
+          data-validate="text"
+        ></textarea>
+        <div id="userCommentError" class="error-message">
+          Пожалуйста, введите комментарий (до 500 символов)
+        </div>
+      </div>
+      
+      <div class="form-group" id="captchaGroup">
+        <label class="form-label">Подтвердите, что вы не робот</label>
+        <div class="captcha-container">
+          <div id="captchaText" class="captcha-text">A7B9C</div>
+          <button type="button" id="refreshCaptcha" class="refresh-captcha">
+            ↻
+          </button>
+        </div>
+        <input
+          type="text"
+          id="captchaInput"
+          class="form-input"
+          placeholder="Введите текст с картинки"
+          data-validate="captcha"
+        />
+        <div id="captchaInputError" class="error-message">
+        
+        </div>
+      </div>
+
+      <div class="form-group" id="privacyGroup">
+        <div class="checkbox-container">
+          <input 
+            type="checkbox" 
+            id="privacyCheckbox" 
+            class="form-checkbox"
+            data-validate="checkbox"
+          />
+          <label for="privacyCheckbox" class="checkbox-label">
+            Я согласен на обработку персональных данных
+          </label>
+        </div>
+        <div id="privacyCheckboxError" class="error-message">
+          Необходимо дать согласие на обработку персональных данных
+        </div>
+      </div>
+      
+      <button type="submit" id="submitBtn" class="submit-btn" disabled>
+        Отправить
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Универсальное окно благодарности -->
+<div id="thankYouModal" class="modal-overlay">
+  <div class="modal-content thank-you-modal">
+    <div class="thank-you-icon">✓</div>
+    <h2 class="thank-you-title" id="thankYouTitle">Спасибо за обращение!</h2>
+    <p class="thank-you-text" id="thankYouText">
+      Наш менеджер свяжется с вами в ближайшее время.
+    </p>
+    <button id="closeThankYouBtn" class="submit-btn" style="max-width: 200px">
+      Закрыть
+    </button>
+  </div>
+</div>
+
+  <script src="js/modal_windows.js"></script>
+  </body>
+</html>

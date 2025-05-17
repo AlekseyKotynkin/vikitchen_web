@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>V.I.K. — Ваша Идеальная Кухня</title>
+
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-functions-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-messaging-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-remote-config-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-performance-compat.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.min.js"></script>
+
+    <script src="js/firebase-config.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="products"></div>
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container">
+        <div class="header-top">
+          <div class="logo">
+            <a href="index.html" class="header-logo">
+              <img src="images/logo_VIK.png" alt="V.I.K." class="logo" />
+            </a>
+            <span>Ваша Идеальная Кухня</span>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="index.html#styles">Стили</a></li>
+              <li><a href="index.html#katalog">Каталог</a></li>
+              <li><a href="index.html#promo">Акции</a></li>
+              <li><a href="assistants.html">Помощники</a></li>
+              <li><a href="buyers.html">Покупателям</a></li>
+            </ul>
+          </nav>
+          <div class="header-contacts">
+            <a href="tel:+71234567890" class="phone">+7 (123) 456-78-90</a>
+            <button class="callback-btn" data-modal-type="callback" data-title="Заказать звонок" data-button-text="Заказать" data-hide-comment="true">Заказать звонок</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <header class="assistant-header">
+        <h1>Онлайн помощник по выбору кухни</h1>
+        <p>
+          Подберите идеальную кухню с помощью наших инструментов и материалов
+        </p>
+      </header>
+
+      <div class="category-tabs">
+        <button class="tab-btn active" data-tab="templates">Шаблоны</button>
+<!--         <button class="tab-btn" data-tab="courses">Мини-курсы</button>
+ -->        <button class="tab-btn" data-tab="calculators">Калькуляторы</button>
+        <button class="tab-btn" data-tab="tests">Тесты</button>
+        <button class="tab-btn" data-tab="checklists">Чек-листы</button>
+        <button class="tab-btn" data-tab="online_constructor">Онлайн конструктор</button>
+      </div>
+
+      <!-- Шаблоны -->
+      <section id="templates" class="content-section active">
+        <h2>Полезные шаблоны</h2>
+        <p>Готовые решения для планирования вашей кухни</p>
+
+        <div class="materials-grid">
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/prostranstvo.webp');"></div>
+            <div class="material-content">
+              <span class="material-category">Шаблон</span>
+              <h3 class="material-title">Для кого создаем пространство?</h3>
+              <p class="material-desc">Ваш стиль + наша экспертиза = идеальный результат</p>
+              <button class="download-btn" 
+                data-hide-comment="true"  
+                data-modal-type="download" 
+                data-title="Скачать каталог" 
+                data-button-text="Скачать" 
+                data-thankyou-title="Каталог отправлен!"
+                data-thankyou-text="Файл начнет скачиваться автоматически." 
+                data-file-id="catalog-2024" 
+                data-file-name="Каталог 2024.pdf">Скачать PDF</button>
+            </div>
+          </div>
+
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/dizain.webp');"
+            ></div>
+            <div class="material-content">
+              <span class="material-category">Шаблон</span>
+              <h3 class="material-title">ТЗ для дизайнера</h3>
+              <p class="material-desc">Заполните этот шаблон, чтобы получить идеальный проект</p>
+              <button class="download-btn"
+                data-hide-comment="true"
+                data-modal-type="download" 
+                data-title="Скачать каталог" 
+                data-button-text="Скачать" 
+                data-thankyou-title="Каталог отправлен!"
+                data-thankyou-text="Файл начнет скачиваться автоматически."
+                data-file-id="catalog-2024"
+                data-file-name="Каталог 2024.pdf">Скачать PDF</button>
+            </div>
+          </div>
+
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/material.webp');"></div>
+            <div class="material-content">
+              <span class="material-category">Шаблон</span>
+              <h3 class="material-title">Выбираем материалы</h3>
+              <p class="material-desc">Сравнение характеристик столешниц, фасадов и фурнитуры</p>
+              <button class="download-btn"
+                data-hide-comment="true"
+                data-modal-type="download" 
+                data-title="Скачать каталог" 
+                data-button-text="Скачать" 
+                data-thankyou-title="Каталог отправлен!"
+                data-thankyou-text="Файл начнет скачиваться автоматически."
+                data-file-id="catalog-2024"
+                data-file-name="Каталог 2024.pdf">Скачать PDFг</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Мини-курсы -->
+<!--       <section id="courses" class="content-section">
+        <h2>Мини-курсы</h2>
+        <p>Короткие обучающие материалы по выбору и планированию кухни</p>
+
+        <div class="materials-grid">
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/course1.webp');"></div>
+            <div class="material-content">
+              <span class="material-category">Видеокурс</span>
+              <h3 class="material-title">5 ошибок при выборе кухни</h3>
+              <p class="material-desc">Как избежать распространенных ошибок и сэкономить бюджет</p>
+              <button class="download-btn" data-file-id="catalog-2024" data-file-name="Каталог 2024.pdf">Скачать каталог</button>
+            </div>
+          </div>
+
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/course2.webp');"></div>
+            <div class="material-content">
+              <span class="material-category">Гайд</span>
+              <h3 class="material-title">Эргономика кухни</h3>
+              <p class="material-desc">Как организовать пространство для удобного приготовления пищи</p>
+              <button class="download-btn" data-file-id="catalog-2024" data-file-name="Каталог 2024.pdf">Скачать каталог</button>
+            </div>
+          </div>
+
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/course3.webp');"></div>
+            <div class="material-content">
+              <span class="material-category">Чек-лист</span>
+              <h3 class="material-title">Техника для кухни</h3>
+              <p class="material-desc">Как выбрать встраиваемую технику и не переплатить</p>
+              <button class="download-btn" data-file-id="catalog-2024" data-file-name="Каталог 2024.pdf">Скачать каталог</button>
+            </div>
+          </div>
+        </div>
+      </section>
+ -->
+      <!-- Калькуляторы -->
+      <section id="calculators" class="content-section">
+        <h2>Калькуляторы</h2>
+        <p>Рассчитайте стоимость и параметры вашей будущей кухни</p>
+
+        <div class="calculator-container">
+          <h3 class="calculator-title">Калькулятор стоимости кухни</h3>
+
+          <div class="form-group">
+            <label for="kitchen-type" class="form-label">Тип кухни:</label>
+            <select id="kitchen-type" class="form-select">
+              <option value="linear">Прямая</option>
+              <option value="corner">Угловая</option>
+              <option value="u-shaped">П-образная</option>
+              <option value="island">С островом</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="kitchen-length" class="form-label">Длина кухни (м):</label>
+            <input type="number" id="kitchen-length" class="form-input" min="1" max="10" step="0.1" value="3"/>
+          </div>
+
+          <div class="form-group">
+            <label for="material" class="form-label">Материал фасадов:</label>
+            <select id="material" class="form-select">
+              <option value="plastic">Пластик</option>
+              <option value="mdf">МДФ эмаль</option>
+              <option value="wood">Массив дерева</option>
+              <option value="glass">Стекло</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="countertop" class="form-label">Столешница:</label>
+            <select id="countertop" class="form-select">
+              <option value="laminate">Ламинированная</option>
+              <option value="artstone">Искусственный камень</option>
+              <option value="naturalstone">Натуральный камень</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="calculate-btn">Рассчитать стоимость</button>
+
+          <div id="result-container" class="result-container">
+            <h4>Примерная стоимость:</h4>
+            <p id="result-price" style="font-size: 1.5rem; font-weight: bold; margin: 10px 0"></p>
+            <p id="result-details"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Тесты -->
+      <section id="tests" class="content-section">
+        <h2>Тесты</h2>
+        <p>Пройдите тесты, чтобы определить идеальный вариант кухни для вас</p>
+
+        <div id="test-container">
+          <div id="question1" class="test-question active">
+            <h3>Как часто вы готовите дома?</h3>
+            <div class="test-options">
+              <div class="test-option" data-value="1">Каждый день, люблю готовить</div>
+              <div class="test-option" data-value="2">2-3 раза в неделю</div>
+              <div class="test-option" data-value="3">Редко, в основном разогреваю еду</div>
+            </div>
+          </div>
+
+          <div id="question2" class="test-question">
+            <h3>Сколько человек обычно находится на кухне одновременно?</h3>
+            <div class="test-options">
+              <div class="test-option" data-value="1">1 (я один/одна готовлю)</div>
+              <div class="test-option" data-value="2">2-3 человека</div>
+              <div class="test-option" data-value="3">Вся семья (4+ человека)</div>
+            </div>
+          </div>
+
+          <div id="question3" class="test-question">
+            <h3>Какой стиль кухни вам нравится?</h3>
+            <div class="test-options">
+              <div class="test-option" data-value="1">Современный минимализм</div>
+              <div class="test-option" data-value="2">Классический</div>
+              <div class="test-option" data-value="3">Скандинавский/Эко</div>
+              <div class="test-option" data-value="4">Лофт/Индустриальный</div>
+            </div>
+          </div>
+
+          <div id="question4" class="test-question">
+            <h3>Какой у вас бюджет на кухню?</h3>
+            <div class="test-options">
+              <div class="test-option" data-value="1">До 100 000 руб.</div>
+              <div class="test-option" data-value="2">100 000 - 250 000 руб.</div>
+              <div class="test-option" data-value="3">250 000 - 500 000 руб.</div>
+              <div class="test-option" data-value="4">Более 500 000 руб.</div>
+            </div>
+          </div>
+
+          <div id="question5" class="test-question">
+            <h3>Что для вас важнее всего в кухне?</h3>
+            <div class="test-options">
+              <div class="test-option" data-value="1">Функциональность и удобство</div>
+              <div class="test-option" data-value="2">Внешний вид и дизайн</div>
+              <div class="test-option" data-value="3">Долговечность материалов</div>
+              <div class="test-option" data-value="4">Легкость в уходе</div>
+            </div>
+          </div>
+
+          <div id="test-result" class="test-question" style="display: none">
+            <h3>Результаты теста</h3>
+            <p id="result-text" style="margin: 20px 0"></p>
+            <div id="result-recommendations"></div>
+          </div>
+
+          <div class="test-nav">
+            <button id="prev-btn" class="test-btn" disabled>Назад</button>
+            <button id="next-btn" class="test-btn">Далее</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Чек-листы -->
+      <section id="checklists" class="content-section">
+        <h2>Чек-листы</h2>
+        <p>Проверьте, ничего ли вы не упустили при выборе и заказе кухни</p>
+
+        <div class="materials-grid">
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/ch_l_1.webp');"></div>
+            <div class="material-content">
+              <span class="material-category">Чек-лист</span>
+              <h3 class="material-title">Подготовка к замеру</h3>
+              <p class="material-desc">Что нужно сделать перед приездом замерщика</p>
+              <button class="download-btn" 
+                data-hide-comment="true"
+                data-modal-type="download" 
+                data-title="Скачать каталог" 
+                data-button-text="Скачать" 
+                data-thankyou-title="Каталог отправлен!"
+                data-thankyou-text="Файл начнет скачиваться автоматически."
+                data-file-id="catalog-2024" 
+                data-file-name="Каталог 2024.pdf">Скачать каталог</button>
+            </div>
+          </div>
+
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/ch_l_2.webp');"></div>
+            <div class="material-content">
+              <span class="material-category">Чек-лист</span>
+              <h3 class="material-title">Техника для кухни</h3>
+              <p class="material-desc">Список возможной техники для кухонного пространства</p>
+              <button class="download-btn"
+                data-hide-comment="true"
+                data-modal-type="download" 
+                data-title="Скачать каталог" 
+                data-button-text="Скачать" 
+                data-thankyou-title="Каталог отправлен!"
+                data-thankyou-text="Файл начнет скачиваться автоматически."
+                data-file-id="catalog-2024"
+                data-file-name="Каталог 2024.pdf">Скачать каталог</button>
+            </div>
+          </div>
+
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/ch_l_3.webp');"></div>
+            <div class="material-content">
+              <span class="material-category">Чек-лист</span>
+              <h3 class="material-title">Приемка кухни</h3>
+              <p class="material-desc">На что обратить внимание при получении кухни</p>
+              <button class="download-btn"
+                data-hide-comment="true"
+                data-modal-type="download" 
+                data-title="Скачать каталог" 
+                data-button-text="Скачать" 
+                data-thankyou-title="Каталог отправлен!"
+                data-thankyou-text="Файл начнет скачиваться автоматически."
+                data-file-id="catalog-2024" 
+                data-file-name="Каталог 2024.pdf">Скачать каталог</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Онлайн конструктор -->
+      <section id="online_constructor" class="content-section">
+        <h2>Онлайн конструктор</h2>
+        <p>Онлайн-конструктор кухонь — стань сам себе дизайнером!</p>
+
+        <div class="materials-grid">
+<!--           <div class="material-card">
+            <div
+              class="material-image"
+              style="
+                background-image: url('https://storage.yandexcloud.net/vikitchen/course1.webp');
+              "
+            ></div>
+            <div class="material-content">
+              <span class="material-category">Видеокурс</span>
+              <h3 class="material-title">5 ошибок при выборе кухни</h3>
+              <p class="material-desc">
+                Как избежать распространенных ошибок и сэкономить бюджет
+              </p>
+              <a href="#" class="material-link">Смотреть</a>
+            </div>
+          </div>
+
+          <div class="material-card">
+            <div
+              class="material-image"
+              style="
+                background-image: url('https://storage.yandexcloud.net/vikitchen/course2.webp');
+              "
+            ></div>
+            <div class="material-content">
+              <span class="material-category">Гайд</span>
+              <h3 class="material-title">Эргономика кухни</h3>
+              <p class="material-desc">
+                Как организовать пространство для удобного приготовления пищи
+              </p>
+              <a href="#" class="material-link">Читать</a>
+            </div>
+          </div>
+ -->
+          <div class="material-card">
+            <div class="material-image" style="background-image: url('https://storage.yandexcloud.net/vikitchen/konstruktor_3.webp');"></div>
+            <div class="material-content">
+              <p class="material-desc">Начните с ввода параметров комнаты и указания всех важных размеров, затем разместите оконные и дверные проемы в соответствующих зонах.</p>
+              <a class="material-link"
+                data-hide-comment="true"
+                data-modal-type="material" 
+                data-title="Открыть конструктор" 
+                data-button-text="Открыть" 
+                data-thankyou-title="Открываем!"
+                data-thankyou-text="Конструктор откроется автоматически.">Открыть конструктор</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал -->
+    <footer id="footer" class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Услуги</h3>
+            <ul>
+              <li><a href="services.html">Дизайн-проект</a></li>
+              <li><a href="services.html">Замер</a></li>
+              <li><a href="services.html">Доставка</a></li>
+              <li><a href="services.html">Установка</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Партнерам</h3>
+            <ul>
+              <li><a href="partners.html">Ремонтным бригадам</a></li>
+              <li><a href="partners.html">Дизайн-студиям</a></li>
+              <li><a href="partners.html">Предложить партнерство</a></li>
+              <li><a href="partners.html">Отдел закупок</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>О нас</h3>
+            <ul>
+              <li><a href="about.html">О компании</a></li>
+              <li><a href="about.html">Наша миссия</a></li>
+              <li><a href="about.html">Карьера в компании</a></li>
+              <li><a href="about.html">Поддержка</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column contacts-column">
+            <h3>Контакты</h3>
+            <address>
+              <p><a href="addresses.html">Наши адреса</a></p>
+              <p><a href="tel:+71234567890">+7 (123) 456-78-90</a></p>
+              <p>
+                <a href="mailto:info@vikitchen.ru">info@vikitchen.ru</a>
+              </p>
+            </address>
+            <div class="social-links">
+              <a href="https://vk.com/vikitchen_ru" class="social-icon"
+                ><img
+                  src="images/icon_vk.png"
+                  alt="Группа ВКонтакте"
+                  width="32"
+                  height="32"
+              /></a>
+              <a href="https://t.me/vikitchen" class="social-icon"
+                ><img
+                  src="images/icon_telegram.png"
+                  alt="Группа Телеграм"
+                  width="32"
+                  height="32"
+              /></a>
+              <a href="https://rutube.ru/channel/63057802/" class="social-icon"
+                ><img
+                  src="images/icon_rutube.png"
+                  alt="Канал RuTube"
+                  width="32"
+                  height="32"
+              /></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 - 2025 V.I.K. — Ваша Идеальная Кухня. Все права
+            защищены.
+          </p>
+          <a href="privacy-policy.html" class="policy-link"
+            >Политика конфиденциальности</a
+          >
+        </div>
+      </div>
+    </footer>
+
+<!-- Универсальное модальное окно -->
+<div id="universalModal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">Заголовок формы</h2>
+      <button class="close-btn">&times;</button>
+    </div>
+    <form id="universalForm">
+      <input type="hidden" id="pageUrl" name="pageUrl">
+      <input type="hidden" id="formType" name="formType">
+      
+      <div class="form-group" id="nameGroup">
+        <label for="userName" class="form-label">ФИО</label>
+        <input
+          type="text"
+          id="userName"
+          class="form-input"
+          placeholder="Введите ваше имя"
+          maxlength="30"
+          data-validate="name"
+        />
+        <div id="userNameError" class="error-message">
+          Пожалуйста, введите корректное ФИО (только буквы, до 30 символов)
+        </div>
+      </div>
+      
+      <div class="form-group" id="phoneGroup">
+        <label for="userPhone" class="form-label">Телефон</label>
+        <input
+          type="tel"
+          id="userPhone"
+          class="form-input"
+          placeholder="+7 (___) ___-__-__"
+          data-validate="phone"
+        />
+        <div id="userPhoneError" class="error-message">
+          Пожалуйста, введите корректный номер телефона (начинается с +7)
+        </div>
+      </div>
+      
+      <div class="form-group" id="commentGroup">
+        <label for="userComment" class="form-label">Комментарий</label>
+        <textarea
+          id="userComment"
+          class="form-input"
+          rows="5"
+          placeholder="Введите ваш комментарий"
+          maxlength="500"
+          data-validate="text"
+        ></textarea>
+        <div id="userCommentError" class="error-message">
+          Пожалуйста, введите комментарий (до 500 символов)
+        </div>
+      </div>
+      
+      <div class="form-group" id="captchaGroup">
+        <label class="form-label">Подтвердите, что вы не робот</label>
+        <div class="captcha-container">
+          <div id="captchaText" class="captcha-text">A7B9C</div>
+          <button type="button" id="refreshCaptcha" class="refresh-captcha">
+            ↻
+          </button>
+        </div>
+        <input
+          type="text"
+          id="captchaInput"
+          class="form-input"
+          placeholder="Введите текст с картинки"
+          data-validate="captcha"
+        />
+        <div id="captchaInputError" class="error-message">
+          
+        </div>
+      </div>
+
+      <div class="form-group" id="privacyGroup">
+        <div class="checkbox-container">
+          <input 
+            type="checkbox" 
+            id="privacyCheckbox" 
+            class="form-checkbox"
+            data-validate="checkbox"
+          />
+          <label for="privacyCheckbox" class="checkbox-label">
+            Я согласен на обработку персональных данных
+          </label>
+        </div>
+        <div id="privacyCheckboxError" class="error-message">
+          Необходимо дать согласие на обработку персональных данных
+        </div>
+      </div>
+      
+      <button type="submit" id="submitBtn" class="submit-btn" disabled>
+        Отправить
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Универсальное окно благодарности -->
+<div id="thankYouModal" class="modal-overlay">
+  <div class="modal-content thank-you-modal">
+    <div class="thank-you-icon">✓</div>
+    <h2 class="thank-you-title" id="thankYouTitle">Спасибо за обращение!</h2>
+    <p class="thank-you-text" id="thankYouText">
+      Наш менеджер свяжется с вами в ближайшее время.
+    </p>
+    <button id="closeThankYouBtn" class="submit-btn" style="max-width: 200px">
+      Закрыть
+    </button>
+  </div>
+</div>
+
+
+    <script src="js/modal_windows.js"></script>
+    <script src="js/assistants.js"></script>
+  </body>
+</html>
