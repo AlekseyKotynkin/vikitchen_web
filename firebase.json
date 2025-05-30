@@ -25,16 +25,175 @@
       "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"]
     }
   ],
-  "hosting": {
-    "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  },
+    "hosting": {
+      "public": "public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "cleanUrls": true,
+      "trailingSlash": false,
+      
+      "redirects": [
+        {
+          "source": "/about.html",
+          "destination": "/about",
+          "type": 301
+        },
+        {
+          "source": "/addresses.html",
+          "destination": "/addresses",
+          "type": 301
+        },
+        {
+          "source": "/assistants.html",
+          "destination": "/assistants",
+          "type": 301
+        },
+        {
+          "source": "/buyers.html",
+          "destination": "/buyers",
+          "type": 301
+        },
+        {
+          "source": "/partners.html",
+          "destination": "/partners",
+          "type": 301
+        },
+        {
+          "source": "/privacy-policy.html",
+          "destination": "/privacy-policy",
+          "type": 301
+        },
+        {
+          "source": "/product_groups.html",
+          "destination": "/product_groups",
+          "type": 301
+        },
+        {
+          "source": "/product.html",
+          "destination": "/product",
+          "type": 301
+        },
+        {
+          "source": "/services.html",
+          "destination": "/services",
+          "type": 301
+        }
+      ],
+      
+      "rewrites": [
+        {
+          "source": "/",
+          "destination": "/index"
+        },
+        {
+          "source": "/index.html",
+          "destination": "/index"
+        },
+        {
+          "source": "/about.html",
+          "destination": "/about"
+        },
+        {
+          "source": "/addresses.html",
+          "destination": "/addresses"
+        },
+        {
+          "source": "/assistants.html",
+          "destination": "/assistants"
+        },
+        {
+          "source": "/buyers.html",
+          "destination": "/buyers"
+        },
+        {
+          "source": "/partners.html",
+          "destination": "/partners"
+        },
+        {
+          "source": "/privacy-policy.html",
+          "destination": "/privacy-policy"
+        },
+        {
+          "source": "/product_groups.html",
+          "destination": "/product_groups"
+        },
+        {
+          "source": "/product.html",
+          "destination": "/product"
+        },
+        {
+          "source": "/services.html",
+          "destination": "/services"
+        }
+      ],
+      
+      "error": {
+        "404": "/404.html"
+      },
+      
+      "headers": [
+        {
+          "source": "/404.html",
+          "headers": [
+            {"key": "Cache-Control", "value": "no-store, max-age=0"},
+            {"key": "CDN-Cache-Control", "value": "no-store"}
+          ]
+        },
+        {
+          "source": "/about",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/about>; rel=\"canonical\""}
+          ]
+        },
+        {
+          "source": "/addresses",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/addresses>; rel=\"canonical\""}
+          ]
+        },
+        {
+          "source": "/assistants",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/assistants>; rel=\"canonical\""}
+          ]
+        },
+        {
+          "source": "/buyers",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/buyers>; rel=\"canonical\""}
+          ]
+        },
+        {
+          "source": "/partners",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/partners>; rel=\"canonical\""}
+          ]
+        },
+        {
+          "source": "/privacy-policy",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/privacy-policy>; rel=\"canonical\""}
+          ]
+        },
+        {
+          "source": "/product_groups",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/product_groups>; rel=\"canonical\""}
+          ]
+        },
+        {
+          "source": "/product",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/product>; rel=\"canonical\""}
+          ]
+        },
+        {
+          "source": "/services",
+          "headers": [
+            {"key": "Link", "value": "<https://vikitchen.ru/services>; rel=\"canonical\""}
+          ]
+        }
+      ]
+    },
   "storage": {
     "rules": "storage.rules"
   },

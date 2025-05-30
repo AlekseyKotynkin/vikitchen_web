@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /account/
+Disallow: /search/
+Disallow: /?filter_
+Disallow: /*?*sort=
+Disallow: /*.pdf$
+Disallow: /*.docx$
+Disallow: /404.html
+
+Sitemap: https://vikitchen.ru/sitemap.xml

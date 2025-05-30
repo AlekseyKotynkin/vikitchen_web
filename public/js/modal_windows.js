@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("universalModal");
   const thankYouModal = document.getElementById("thankYouModal");
   const openModalBtns = document.querySelectorAll(
-    ".open-modal-btn, .callback-btn, .cta-button, .promo-button, .download-btn, .open-feedback-btn, .service-cta, .material-link, .btn btn-secondary, .add-review-btn, .add-question-btn"
+    ".open-modal-btn, .callback-btn, .cta-button, .promo-button, .download-btn, .open-feedback-btn, .service-cta, .material-link, .btn btn-secondary, .add-review-btn, .add-question-btn, .callback-btn, .cta-button"
   );
   const closeBtns = document.querySelectorAll(".close-btn, #closeThankYouBtn");
 
@@ -390,3 +390,11 @@ async function sendToTelegram(formData) {
     return false;
   }
 }
+
+// Добавить обработку ошибок роутинга
+document.addEventListener('DOMContentLoaded', () => {
+  if(document.querySelector('.error-page')) {
+    // Специфичная логика для страницы 404
+    console.log('404 page loaded');
+  }
+});
